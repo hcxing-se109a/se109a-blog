@@ -2,15 +2,10 @@ const app = require('../../server/app.js')
 const server = app.listen()
 const request = require('supertest').agent(server)
 const expect = require('chai').expect
-const User = require('../../server/models/user')
-const isAuth = require('../../server/middlewares/is-auth')
 const mongoose = require('mongoose')
+const testData = require('../data')
 
-let user = {
-  email: 'test1@gmail.com',
-  name: 'test1',
-  password: '123456'
-}
+let user = testData.user
 
 describe('# Auth API', () => {
 
@@ -19,7 +14,7 @@ describe('# Auth API', () => {
   })
 
   after(async () => {
-    await User.findOneAndDelete({ email: user.email })
+    await testData.deleteTestUser()
     mongoose.connection.close()
     server.close()
   })
