@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./server/app.js",
+    "client": "live-server --host=localhost ./client/",
     "test": "mocha ./test/**/*.test.js",
     "coverage": "nyc --reporter=text npm run test"
   },
