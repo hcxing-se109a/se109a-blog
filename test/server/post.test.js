@@ -63,7 +63,6 @@ describe('API: post', () => {
           if (err) {
             return done(err)
           }
-          console.log(res.body)
 
           post.id = res.body.data.post._id
           done()
@@ -78,6 +77,7 @@ describe('API: post', () => {
           if (err) return done()
 
           expect(res.status).to.be.equal(200)
+          expect(res.body.data.posts).to.have.lengthOf(2)
 
           return done()
         })
