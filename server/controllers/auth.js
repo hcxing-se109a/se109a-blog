@@ -45,7 +45,7 @@ class authController {
         ctx.body = {
           message: 'Login success.',
           data: {
-            token: token,
+            token: token.toString(),
             userId: hasUser._id
           }
         }

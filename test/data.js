@@ -11,4 +11,12 @@ module.exports = {
     await User.findOneAndDelete({ email: 'test1@gmail.com' })
   },
 
+  post: {
+    title: 'test-post',
+    content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  },
+
+  deleteTestPost: async () => {
+  }
+
 }
