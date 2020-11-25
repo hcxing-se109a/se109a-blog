@@ -4,7 +4,9 @@
   "description": "a simple blog web application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./server/app.js",
+    "test": "mocha ./test/**/*.test.js",
+    "coverage": "nyc --reporter=text npm run test"
   },
   "repository": {
     "type": "git",
@@ -21,10 +23,14 @@
     "dotenv": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.0",
+    "koa-body": "^4.2.0",
     "koa-router": "^10.0.0",
     "mongoose": "^5.10.15"
   },
   "devDependencies": {
-    "nodemon": "^2.0.6"
+    "chai": "^4.2.0",
+    "nodemon": "^2.0.6",
+    "nyc": "^15.1.0",
+    "supertest": "^6.0.1"
   }
 }

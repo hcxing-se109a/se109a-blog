@@ -11,6 +11,7 @@ const app = new Koa()
 
 app.use(koaBody())
 
+// setting cors
 app.use(async (ctx, next) => {
   ctx.set('Access-Control-Allow-Origin', '*')
   ctx.set('GET, POST, PUT, PATCH, DELETE')
@@ -18,11 +19,11 @@ app.use(async (ctx, next) => {
   await next()
 })
 
+// routes
 const authRoutes = require('./routes/auth')
-const postRoutes = require('./routes/post')
-
 app.use(authRoutes.routes())
-app.use(postRoutes.routes())
 
 mongoose.connect(`${MONGODB_URI}`, { useNewUrlParser: true, useUnifiedTopology: true })
 app.listen(`${PORT}`, () => console.log(`Server: http://localhost:${PORT}`))
+
+module.exports = app
