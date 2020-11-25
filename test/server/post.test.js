@@ -47,8 +47,7 @@ describe('API: post', () => {
           if (err) return done(err)
 
           auth.token = res.body.data.token
-          console.log(res.body)
-          console.log(auth)
+
           done()
         })
     })
@@ -62,9 +61,11 @@ describe('API: post', () => {
         .expect(201)
         .end((err, res) => {
           if (err) {
-            console.log(err)
             return done(err)
           }
+          console.log(res.body)
+
+          post.id = res.body.data.post._id
           done()
         })
     })
@@ -73,25 +74,61 @@ describe('API: post', () => {
   describe('GET /api/posts', () => {
     it('should return all posts', (done) => {
       request.get('/api/posts')
-        .expect(200)
         .end((err, res) => {
           if (err) return done()
+
+          expect(res.status).to.be.equal(200)
 
           return done()
         })
     });
   });
 
-  describe('GET /api/post/:id', () => {
+  describe(`GET /api/post/:id`, () => {
+    it('should return a post', (done) => {
+      request.get(`/api/post/${post.id}`)
+        .set('Authorization', 'Bearer ' + auth.token)
+        .end((err, res) => {
+          if (err) return done()
+
+          expect(res.status).to.be.equal(200)
+
+          done()
+        })
+    });
 
   });
 
   describe('PUT /api/posts/:id', () => {
+    it('should update a post', (done) => {
+      let newPost = {
+        title: "new-test-post",
+        content: "123456"
+      }
+      request.put(`/api/post/${post.id}`)
+        .set('Authorization', 'Bearer ' + auth.token)
+        .send({ title: newPost.title, content: newPost.content })
+        .end((err, res) => {
+          if (err) return done()
 
+          expect(res.status).to.be.equal(200)
+
+          done()
+        })
+    });
   });
 
   describe('DELETE /api/post/:id', () => {
+    it('should delete a post', (done) => {
+      request.delete(`/api/post/${post.id}`)
+        .set('Authorization', 'Bearer ' + auth.token)
+        .end((err, res) => {
+          if (err) return done()
+          expect(res.status).to.be.equal(200)
 
+          done()
+        })
+    });
   });
 
 })
