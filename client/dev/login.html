@@ -20,7 +20,7 @@
         }
 
         body {
-            background: url("./background.jpg") no-repeat center center / cover;
+            background: url("./public/background.jpg") no-repeat center center / cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -76,7 +76,7 @@
 
         .form .btn-group {
             font-size: 0;
-            margin-top: 50px;
+            margin-top: 30px;
         }
 
         .form .btn {
@@ -84,15 +84,12 @@
             border-radius: 5px;
             border: none;
             background-color: #6ab4fe;
-            width: 190px;
+            width: 100%;
             padding: 10px 0;
             color: #fff;
             font-family: "Noto Sans TC", sans-serif;
         }
 
-        .form .btn+.btn {
-            margin-left: 20px;
-        }
     </style>
 </head>
 
@@ -102,17 +99,17 @@
             <h2>會員登入</h2>
             <span class="msg">發生錯誤</span>
             <div class="group">
-                <label for="user_id">帳號</label>
-                <input type="text" name="" id="user_id">
+                <label for="user_id">Email</label>
+                <input type="email" name="email" id="user_id">
             </div>
             <div class="group">
                 <label for="user_password">密碼</label>
-                <input type="password" name="" id="user_password">
+                <input type="password" name="password" id="user_password">
             </div>
             <div class="btn-group">
                 <button class="btn">登入</button>
-                <button class="btn">取消</button>
             </div>
+            <br><a href="#/signup">註冊</a>
         </form>
     </div>
 

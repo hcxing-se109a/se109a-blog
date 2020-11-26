@@ -1,6 +1,7 @@
 const Koa = require("koa")
 const koaBody = require('koa-body')
 const koaLogger = require('koa-logger')
+const cors = require('@koa/cors')
 const mongoose = require('mongoose')
 
 require('dotenv').config()
@@ -14,12 +15,16 @@ app.use(koaBody())
 app.use(koaLogger())
 
 // setting cors
-app.use(async (ctx, next) => {
-  ctx.set('Access-Control-Allow-Origin', '*')
-  ctx.set('GET, POST, PUT, PATCH, DELETE')
-  ctx.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-  await next()
-})
+app.use(cors({
+  origin: function (ctx) {
+    return 'http://localhost:8080';
+  },
+  exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+  maxAge: 5,
+  credentials: true,
+  allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+}))
 
 // routes
 const authRoutes = require('./routes/auth')

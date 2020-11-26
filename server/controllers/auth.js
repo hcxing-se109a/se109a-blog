@@ -46,7 +46,8 @@ class authController {
           message: 'Login success.',
           data: {
             token: token.toString(),
-            userId: hasUser._id
+            userId: hasUser._id,
+            name: hasUser.name
           }
         }
 

@@ -5,10 +5,12 @@ class PostController {
 
   getPosts = async (ctx) => {
     const currentPage = ctx.query.page || 1
-    const perPage = 2
+    const perPage = 5
     try {
-      const totalItems = await Post.find().count({})
-      const posts = await Post.find()
+      const totalItems = await Post.find().countDocuments()
+
+      let posts = await Post.find().populate('creator', 'name')
+        .sort('-createAt')
         .skip((currentPage - 1) * perPage)
         .limit(perPage)
 
@@ -55,7 +57,7 @@ class PostController {
         title: title,
         content: content,
         creator: ctx.state.userId,
-        createAt: new Date().toLocaleDateString()
+        createAt: new Date()
       })
       await post.save()
 
