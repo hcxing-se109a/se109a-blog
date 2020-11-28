@@ -1,4 +1,5 @@
 const User = require('../server/models/user')
+const Post = require('../server/models/post')
 
 module.exports = {
   user: {
@@ -17,6 +18,7 @@ module.exports = {
   },
 
   deleteTestPost: async () => {
+    await Post.findOneAndDelete({ title: 'test-post' })
   }
 
 }

@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&display=swap");
 
+:root {
+  --btn-color: #6ab4fe;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -91,11 +95,16 @@ body {
   font-size: 20px;
   border-radius: 5px;
   border: none;
-  background-color: #6ab4fe;
+  background-color: var(--btn-color);
   width: 100%;
   padding: 10px 0;
   color: #fff;
   font-family: "Noto Sans TC", sans-serif;
+}
+
+.form a {
+  text-decoration: none;
+  color: var(--btn-color);
 }
 
 nav {
@@ -129,7 +138,7 @@ nav a:hover {
   font-size: 20px;
   border-radius: 5px;
   border: none;
-  background-color: #6ab4fe;
+  background-color: var(--btn-color);
   width: 100%;
   padding: 10px 0;
   margin-bottom: 5vh;

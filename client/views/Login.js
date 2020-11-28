@@ -7,12 +7,12 @@ let view = (
       <h2>登入</h2>
       <span class="msg"></span>
       <div class="group">
-          <label for="user_id">Email</label>
-          <input type="email" name="email" id="user_id" required>
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" required>
       </div>
       <div class="group">
-          <label for="user_password">密碼</label>
-          <input type="password" name="password" id="user_password" required>
+          <label for="password">密碼</label>
+          <input type="password" name="password" id="password" required>
       </div>
       <div class="btn-group">
           <button class="btn">登入</button>
@@ -48,11 +48,11 @@ let Login = async () => {
       }),
       headers: { 'Content-Type': 'application/json' },
     })
-    let resJson = await res.json()
     if (res.status !== 200) {
       let errorMessage = await res.text()
       feedBack(errorMessage)
     } else {
+      let resJson = await res.json()
       let userId = resJson.data.userId
       let name = resJson.data.name
       let token = resJson.data.token

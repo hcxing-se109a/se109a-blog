@@ -77,7 +77,7 @@ describe('API: post', () => {
           if (err) return done()
 
           expect(res.status).to.be.equal(200)
-          expect(res.body.data.posts).to.have.lengthOf(2)
+          expect(res.body.data.posts.length).to.not.equal(0)
 
           return done()
         })
