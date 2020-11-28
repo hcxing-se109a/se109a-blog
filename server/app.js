@@ -17,7 +17,7 @@ app.use(koaLogger())
 // setting cors
 app.use(cors({
   origin: function (ctx) {
-    return 'http://localhost:8080';
+    return '*';
   },
   exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
   maxAge: 5,

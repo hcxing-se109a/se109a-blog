@@ -99,7 +99,8 @@ let view = (
  `
 )
 
-let Home = async () => {
+const Home = async () => {
+  const baseURL = 'http://localhost:3000'
 
   const token = localStorage.getItem("token")
   const userId = localStorage.getItem("userId")
@@ -132,7 +133,7 @@ let Home = async () => {
     let title = e.target.title.value
     let content = e.target.content.value
 
-    let res = await fetch(`http://localhost:3000/api/post`, {
+    let res = await fetch(`${baseURL}/api/post`, {
       method: 'POST',
       body: JSON.stringify({
         title: title,
@@ -156,7 +157,7 @@ let Home = async () => {
     let content = e.target.content.value
     let postId = e.target.id.value
 
-    let res = await fetch(`http://localhost:3000/api/post/${postId}`, {
+    let res = await fetch(`${baseURL}/api/post/${postId}`, {
       method: 'PUT',
       body: JSON.stringify({
         title: title,
@@ -188,7 +189,7 @@ let Home = async () => {
 
   async function displayViewPost(postId) {
     try {
-      let res = await fetch(`http://localhost:3000/api/post/${postId}`, {
+      let res = await fetch(`${baseURL}/api/post/${postId}`, {
         method: 'GET',
         headers: {
           Authorization: 'Bearer ' + token
@@ -211,7 +212,7 @@ let Home = async () => {
   }
 
   async function displayEditForm(postId) {
-    let res = await fetch(`http://localhost:3000/api/post/${postId}`, {
+    let res = await fetch(`${baseURL}/api/post/${postId}`, {
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + token
@@ -264,7 +265,7 @@ let Home = async () => {
         console.log('權限測試')
 
         try {
-          let res = await fetch(`http://localhost:3000/api/post/${postId}`, {
+          let res = await fetch(`${baseURL}/api/post/${postId}`, {
             method: 'DELETE',
             headers: {
               Authorization: 'Bearer ' + token
@@ -285,12 +286,13 @@ let Home = async () => {
 
   async function fetchData() {
 
-    let res = await fetch(`http://localhost:3000/api/posts?page=${page}`, {
+    let res = await fetch(`${baseURL}/api/posts?page=${page}`, {
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + token
       }
     })
+    console.log(res.data)
     let data = (await res.json()).data.posts
 
     return data

@@ -60,6 +60,16 @@ let Login = async () => {
       localStorage.setItem("userName", name)
       localStorage.setItem('token', token)
 
+      // Server 端的 JWT token 時效為一小時，Client 端也要設定
+      const remainingMilliseconds = 3600 * 1000
+      const expiryDate = new Date(
+        new Date().getTime() + remainingMilliseconds
+      );
+      setTimeout(() => {
+        window.location.hash = '#/logout'
+      }, remainingMilliseconds)
+
+      localStorage.setItem('expiryDate', expiryDate.toISOString())
 
       window.location.hash = '#/home'
     }
