@@ -1,17 +1,17 @@
-const Router = require('koa-router')
+const Router = require("koa-router");
 
-const postCtrl = require('../controllers/post')
-const isAuth = require('../middlewares/is-auth')
+const postCtrl = require("../controllers/post");
+const isAuth = require("../middlewares/is-auth");
 
 const router = new Router({
-  prefix: '/api'
-})
+  prefix: "/api",
+});
 
 router
-  .get('/posts', postCtrl.getPosts)
-  .get('/post/:id', isAuth, postCtrl.getPost)
-  .post('/post', isAuth, postCtrl.createPost)
-  .put('/post/:id', isAuth, postCtrl.updatePost)
-  .delete('/post/:id', isAuth, postCtrl.deletePost)
+  .get("/posts", postCtrl.getPosts)
+  .get("/post/:id", isAuth, postCtrl.getPost)
+  .post("/post", isAuth, postCtrl.createPost)
+  .put("/post/:id", isAuth, postCtrl.updatePost)
+  .delete("/post/:id", isAuth, postCtrl.deletePost);
 
-module.exports = router
+module.exports = router;

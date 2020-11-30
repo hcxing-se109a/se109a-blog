@@ -1,7 +1,6 @@
-const App = document.querySelector('#app')
+const App = document.querySelector("#app");
 
-let view = (
-  `
+let view = `
   <div class="signup">
     <form class="form">
       <h2>註冊</h2>
@@ -24,42 +23,41 @@ let view = (
       <br><a href="#/login">登入</a>
     </form>
   </div>
-  `
-)
+  `;
 
 let feedBack = (message) => {
-  let msgSpan = document.querySelector('.msg')
-  msgSpan.innerText = message
-  console.log(message)
-}
+  let msgSpan = document.querySelector(".msg");
+  msgSpan.innerText = message;
+  console.log(message);
+};
 
 let Signup = async () => {
-  App.innerHTML = view
-  let signupForm = document.querySelector('.form')
-  signupForm.addEventListener('submit', async (event) => {
-    event.preventDefault()
+  App.innerHTML = view;
+  let signupForm = document.querySelector(".form");
+  signupForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
     let userEmail = event.target.email.value,
       userName = event.target.name.value,
       userPwd = event.target.password.value;
 
     let response = await fetch(`http://localhost:3000/api/auth/signup`, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify({
         email: userEmail,
         name: userName,
-        password: userPwd
+        password: userPwd,
       }),
-      headers: { 'Content-Type': 'application/json' }
-    })
+      headers: { "Content-Type": "application/json" },
+    });
 
     if (response.status !== 201) {
-      let errorMessage = await response.text()
-      feedBack(errorMessage)
+      let errorMessage = await response.text();
+      feedBack(errorMessage);
     } else {
-      window.location.hash = '#/login'
+      window.location.hash = "#/login";
     }
-  })
-}
+  });
+};
 
-export default Signup
+export default Signup;

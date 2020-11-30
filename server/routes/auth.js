@@ -1,14 +1,14 @@
-const Router = require('koa-router')
+const Router = require("koa-router");
 
-const authCtrl = require('../controllers/auth')
+const authCtrl = require("../controllers/auth");
 
 const router = new Router({
-  prefix: '/api/auth'
-})
+  prefix: "/api/auth",
+});
 
 router
-  .post('/signup', authCtrl.postSignup)
-  .post('/login', authCtrl.postLogin)
-  .post('/logout', authCtrl.postLogout)
+  .post("/signup", authCtrl.postSignup)
+  .post("/login", authCtrl.postLogin)
+  .post("/logout", authCtrl.postLogout);
 
-module.exports = router
+module.exports = router;
