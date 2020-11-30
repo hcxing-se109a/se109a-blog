@@ -15,7 +15,7 @@ window.onhashchange = () => {
 
   switch (route) {
     case "home":
-      isAuth();
+      // isAuth();
       Views.Home();
       break;
     case "login":
@@ -28,7 +28,7 @@ window.onhashchange = () => {
       Views.Logout();
       break;
     default:
-      Views.Error404();
+      Views.Home();
       break;
   }
 };

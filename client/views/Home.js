@@ -1,10 +1,9 @@
 const App = document.querySelector("#app");
+import Navbar from "./Navbar.js";
 
-let view = `
-  <nav>
-    <a class="user-name">User</a>
-    <a href="#/logout">Logout</a>
-  </nav>
+let view = () => {
+  return `
+  ${Navbar()}
 
   <main>
 
@@ -96,9 +95,10 @@ let view = `
 </main>
 
  `;
+};
 
 const Home = async () => {
-  App.innerHTML = view;
+  App.innerHTML = view();
 
   const mainDiv = document.querySelector("main");
   const loading = document.querySelector(".loader");
@@ -122,10 +122,6 @@ const Home = async () => {
   let page = 1;
   let limit = 5;
   let totalItems;
-
-  function setUserNameOnNav() {
-    document.querySelector("nav .user-name").innerText = userName;
-  }
 
   async function fetchData() {
     let res = await fetch(`${baseURL}/api/posts?page=${page}`, {
@@ -187,7 +183,6 @@ const Home = async () => {
   }
 
   displayPosts();
-  setUserNameOnNav();
 
   function closeModal() {
     modalDiv.style.display = "none";
@@ -253,6 +248,9 @@ const Home = async () => {
   });
 
   modalTrigger.addEventListener("click", (e) => {
+    if (!token) {
+      return alert("請先登入");
+    }
     modalDiv.style.display = "block";
   });
 

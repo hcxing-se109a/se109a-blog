@@ -1,7 +1,10 @@
 const App = document.querySelector("#app");
+import Navbar from "./Navbar.js";
 
-let view = `
-  <div class="login">
+let view = () => {
+  return `
+${Navbar()}
+<div class="login">
   <form class="form">
       <h2>登入</h2>
       <span class="msg"></span>
@@ -20,6 +23,7 @@ let view = `
   </form>
 </div>
  `;
+};
 
 let feedBack = (message) => {
   let msgSpan = document.querySelector(".msg");
@@ -28,7 +32,7 @@ let feedBack = (message) => {
 };
 
 let Login = async () => {
-  App.innerHTML = view;
+  App.innerHTML = view();
 
   let loginForm = document.querySelector(".form");
 

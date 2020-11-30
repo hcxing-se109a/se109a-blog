@@ -1,6 +1,9 @@
 const App = document.querySelector("#app");
+import Navbar from "./Navbar.js";
 
-let view = `
+let view = () => {
+  return `
+  ${Navbar()}
   <div class="signup">
     <form class="form">
       <h2>註冊</h2>
@@ -24,6 +27,7 @@ let view = `
     </form>
   </div>
   `;
+};
 
 let feedBack = (message) => {
   let msgSpan = document.querySelector(".msg");
@@ -32,7 +36,7 @@ let feedBack = (message) => {
 };
 
 let Signup = async () => {
-  App.innerHTML = view;
+  App.innerHTML = view();
   let signupForm = document.querySelector(".form");
   signupForm.addEventListener("submit", async (event) => {
     event.preventDefault();
