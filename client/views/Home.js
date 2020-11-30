@@ -218,9 +218,6 @@ const Home = async () => {
   async function displayEditForm(postId) {
     let res = await fetch(`${baseURL}/api/post/${postId}`, {
       method: "GET",
-      headers: {
-        Authorization: "Bearer " + token,
-      },
     });
     let post = (await res.json()).data.post;
 
