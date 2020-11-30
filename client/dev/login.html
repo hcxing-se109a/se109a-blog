@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            background: url("./public/background.jpg") no-repeat center center / cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login {
+            width: 600px;
+            height: 500px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            border: 10px solid #fff;
+            box-shadow: 0 0 60px #000;
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form {
+            width: 400px;
+            color: #fff;
+        }
+
+        .form h2 {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #fff;
+        }
+
+        .form .msg {
+            color: rgb(255, 140, 140);
+        }
+
+        .form .group {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .form label {
+            line-height: 2;
+            font-family: "Noto Sans TC", sans-serif;
+        }
+
+        .form input {
+            width: 100%;
+            border: 1px solid #aaa;
+            line-height: 3;
+            border-radius: 5px;
+            box-sizing: border-box;
+            padding: 0 10px;
+        }
+
+        .form .btn-group {
+            font-size: 0;
+            margin-top: 30px;
+        }
+
+        .form .btn {
+            font-size: 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #6ab4fe;
+            width: 100%;
+            padding: 10px 0;
+            color: #fff;
+            font-family: "Noto Sans TC", sans-serif;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="login">
+        <form class="form">
+            <h2>會員登入</h2>
+            <span class="msg">發生錯誤</span>
+            <div class="group">
+                <label for="user_id">Email</label>
+                <input type="email" name="email" id="user_id">
+            </div>
+            <div class="group">
+                <label for="user_password">密碼</label>
+                <input type="password" name="password" id="user_password">
+            </div>
+            <div class="btn-group">
+                <button class="btn">登入</button>
+            </div>
+            <br><a href="#/signup">註冊</a>
+        </form>
+    </div>
+
+
+    <script>
+
+    </script>
+</body>
+
+</html>
