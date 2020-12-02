@@ -2,6 +2,15 @@
 
 a simple blog web application
 
+## 專案成員
+
+* 110713305 資工三 黃朝新
+
+## 開發方式
+
+* 螺旋模式開發
+* 合作模式用 github flow
+
 ## 系統分析
 
 ### User Story
@@ -10,7 +19,6 @@ a simple blog web application
 * 註冊
 * 登入
 * 登出
-
 
 貼文：
 * 使用者可以檢視所有貼文
