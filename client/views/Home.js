@@ -1,9 +1,10 @@
 const App = document.querySelector("#app");
-import Navbar from "./Navbar.js";
 
-let view = () => {
-  return `
-  ${Navbar()}
+let view = `
+  <nav>
+    <a class="user-name">User</a>
+    <a href="#/logout">Logout</a>
+  </nav>
 
   <main>
 
@@ -13,7 +14,7 @@ let view = () => {
 
         <div class="modal-content">
             <div class="modal-header">
-                <span class="close">&times;</span>
+                <span class="close close-create">&times;</span>
                 <h2>New Post</h2>
             </div>
             <form class="create-post-form">
@@ -56,7 +57,7 @@ let view = () => {
           <div class="modal-footer">
               <button>ACCEPT</button>
           </div>
-        </form>
+        </form">
     </div>
 
   </div>
@@ -66,7 +67,7 @@ let view = () => {
     <div class="modal-content">
 
       <div class="modal-header">
-          <span class="close close-edit">&times;</span>
+          <span class="close close-view">&times;</span>
           <h2>View Post</h2>
       </div>
       <form class="view-post-form">
@@ -79,7 +80,7 @@ let view = () => {
         </div>
         <div class="modal-footer">
         </div>
-      </form>
+      </form">
 
     </div>
 
@@ -95,10 +96,9 @@ let view = () => {
 </main>
 
  `;
-};
 
 const Home = async () => {
-  App.innerHTML = view();
+  App.innerHTML = view;
 
   const mainDiv = document.querySelector("main");
   const loading = document.querySelector(".loader");
@@ -123,6 +123,10 @@ const Home = async () => {
   let limit = 5;
   let totalItems;
 
+  function setUserNameOnNav() {
+    document.querySelector("nav .user-name").innerText = userName;
+  }
+
   async function fetchData() {
     let res = await fetch(`${baseURL}/api/posts?page=${page}`, {
       method: "GET",
@@ -141,6 +145,7 @@ const Home = async () => {
 
   async function displayPosts() {
     let posts = await fetchData();
+    console.log(posts);
 
     let html = posts.map((post) => {
       let newPost = document.createElement("div");
@@ -183,6 +188,7 @@ const Home = async () => {
   }
 
   displayPosts();
+  setUserNameOnNav();
 
   function closeModal() {
     modalDiv.style.display = "none";
@@ -218,6 +224,9 @@ const Home = async () => {
   async function displayEditForm(postId) {
     let res = await fetch(`${baseURL}/api/post/${postId}`, {
       method: "GET",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
     });
     let post = (await res.json()).data.post;
 
@@ -245,9 +254,6 @@ const Home = async () => {
   });
 
   modalTrigger.addEventListener("click", (e) => {
-    if (!token) {
-      return alert("請先登入");
-    }
     modalDiv.style.display = "block";
   });
 

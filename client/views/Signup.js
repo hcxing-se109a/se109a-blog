@@ -10,15 +10,15 @@ let view = () => {
       <span class="msg"></span>
       <div class="group">
         <label for="user_id">Email</label>
-        <input type="email" name="email" id="user_id" required>
+        <input type="email" name="email" id="email" required>
       </div>
       <div class="group">
         <label for="user_id">使用者名稱</label>
-        <input type="text" name="name" id="user_id" required>
+        <input type="text" name="name" id="name" required>
       </div>
       <div class="group">
         <label for="user_password">密碼</label>
-        <input type="password" name="password" id="user_password" required>
+        <input type="password" name="password" id="password" required>
       </div>
       <div class="btn-group">
         <button class="btn">註冊</button>

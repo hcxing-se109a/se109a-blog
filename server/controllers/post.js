@@ -85,11 +85,12 @@ class PostController {
         ctx.throw(403, "Not Authorized");
       }
 
-      let result = await Post.findOneAndUpdate({
-        id: postId,
-        title: title,
-        content: content,
-      });
+      let result = await Post.findOneAndUpdate(
+        {
+          _id: postId,
+        },
+        { title: title, content: content }
+      );
 
       ctx.status = 200;
       ctx.body = {

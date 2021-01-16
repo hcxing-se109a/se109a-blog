@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon ./server/app.js",
     "client": "live-server --host=localhost ./client/",
-    "test": "mocha ./test/**/*.test.js",
+    "test:api": "mocha ./test/**/*.test.js",
+    "test:e2e": "mocha ./test/client",
     "coverage": "nyc --reporter=text npm run test"
   },
   "repository": {
