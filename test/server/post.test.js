@@ -2,7 +2,6 @@ const app = require("../../server/app.js");
 const server = app.listen();
 const request = require("supertest").agent(server);
 const expect = require("chai").expect;
-const mongoose = require("mongoose");
 const testData = require("../data");
 
 let { user, post } = testData;
@@ -10,16 +9,10 @@ let { user, post } = testData;
 let auth = {};
 
 describe("API: post", () => {
-  before(async () => {
-    mongoose.connect(`${process.env.MONGODB_URI}`, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-  });
+  before(async () => {});
 
   after(async () => {
     await testData.deleteTestUser();
-    mongoose.connection.close();
     server.close();
   });
 

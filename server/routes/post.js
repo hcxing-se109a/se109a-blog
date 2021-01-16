@@ -9,7 +9,7 @@ const router = new Router({
 
 router
   .get("/posts", postCtrl.getPosts)
-  .get("/post/:id", isAuth, postCtrl.getPost)
+  .get("/post/:id", postCtrl.getPost)
   .post("/post", isAuth, postCtrl.createPost)
   .put("/post/:id", isAuth, postCtrl.updatePost)
   .delete("/post/:id", isAuth, postCtrl.deletePost);

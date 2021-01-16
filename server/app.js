@@ -38,6 +38,7 @@ app.use(postRoutes.routes());
 mongoose.connect(`${MONGODB_URI}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 app.listen(`${PORT}`, () => console.log(`Server: http://localhost:${PORT}`));
 
