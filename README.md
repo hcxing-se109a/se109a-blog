@@ -2,6 +2,40 @@
 
 a simple blog web application
 
+## Setup
+
+```
+npm install
+```
+
+## Run
+
+run backend server
+
+```
+npm start
+```
+
+run frontend server
+
+```
+npm run client
+```
+
+## Test
+
+API test
+
+```
+npm run test:api
+```
+
+E2E test
+
+```
+npm run test:e2e
+```
+
 ## 專案成員
 
 - 110713305 資工三 黃朝新
@@ -67,34 +101,5 @@ Node.js + Mongodb + Vanilla.js
 單元測試、整合測試、E2E 測試
 mocha、chai、supertest、puppeteer
 
-- JWT token 的單元測試
 - 用 Supertest 做整合測試
-- 端對端的測試還在努力
-
-## Setup
-
-```
-npm install
-```
-
-## Run
-
-run backend server
-
-```
-npm start
-```
-
-run frontend server
-
-```
-npm run client
-```
-
-## Test
-
-start test for backend routes
-
-```
-npm test
-```
+- 用 Puppteer 做端對端的測試

@@ -2,7 +2,6 @@ const app = require("../../server/app.js");
 const server = app.listen();
 const liveServer = require("live-server");
 const expect = require("chai").expect;
-const mongoose = require("mongoose");
 const testData = require("../data");
 const puppeteer = require("puppeteer");
 require("dotenv").config();
@@ -15,13 +14,9 @@ let browser, page;
 
 describe("End-to-End test: ", () => {
   before(async () => {
-    await liveServer.start({ root: "./client", open: false });
-    mongoose.createConnection(`${process.env.MONGODB_URI}`, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-
     try {
+      await liveServer.start({ root: "./client", open: false });
+
       browser = await puppeteer.launch({
         ignoreDefaultArgs: true,
         headless: false,
@@ -37,7 +32,6 @@ describe("End-to-End test: ", () => {
       // 刪除 user 的測試資料
       await testData.deleteTestUser();
       server.close();
-      mongoose.connection.close();
 
       await browser.close();
     } catch (error) {
