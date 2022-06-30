@@ -1,6 +1,9 @@
 # se109a-blog
 
-a simple blog web application
+a simple blog web application - Node.js/JavaScript(HTML+CSS)/MongoDB
+
+test: mocha, chai, supertest, puppeteer
+
 
 ## Setup
 
